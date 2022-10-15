@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Rabbit Registration Form</title>
+        <link rel="stylesheet" href="register.css">
+    </head>
+
+    <body>
+        <h1>Rabbit Registration Form</h1>
+        <p>Fill out the form for Rabbit Registration</p>
+        <form>
+            <fieldset class="rabbit-id">
+                <label for="first-name">
+                    Rabbit ID: <input id="first-name" name="first-name" type="text" required />
+                </label>
+                <label for="month">Birth Date: <input id="month" name="month" type="date" required /></label>
+            </fieldset>
+
+            <fieldset class="stat">
+                <label for="breed">Breed Type
+                    <select id="breed" name="breed" required>
+                      <option value="">(select one)</option>
+                      <option value="American">American</option>
+                      <option value="Angora-Rabbit">Angora Rabbit</option>
+                      <option value="English-Spot">English Spot</option>
+                      <option value="">Others (please specify)</option>
+                    </select>
+                  </label>
+                <label>Status
+                    <select id="status" name="status" required>
+                        <option value="">(select one)</option>
+                        <option value="Breeder">Breeder</option>
+                        <option value="For sale">For sale</option>
+                        <option value="Sold">Sold</option>
+                        <option value="">Others (please specify)</option>
+                      </select>
+                </label>
+                <label for="death">Birth Date:
+                    <input id="death" name="death" type="date" required />
+                </label>
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
