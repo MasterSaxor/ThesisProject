@@ -1,0 +1,55 @@
+if(b==22){
+      b=0;
+      //Serial.println("RFID Tag: " + tag);
+      trigger=1;
+    }
+    //sending data
+    if(trigger==1){
+    delay(5000);
+ 
+  // Use WiFiClient class to create TCP connections
+  WiFiClient client;
+  const int httpPort = 80;
+  if (!client.connect(host, httpPort)) {
+    Serial.println("connection failed");
+    return;
+  }
+ 
+  // We now create a URI for the request
+
+  String url = "/iot/";
+  url += "insertdata.php?tag=";
+  url += tag;
+  Serial.println("Sending data to web.");
+ 
+  // This will send the request to the server
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" +
+               "Connection: close\r\n\r\n");
+  delay(1000);
+ 
+  // Read all the lines of the reply from server and print them to Serial
+  //int x = 0;
+  while(client.available()){
+    char line = client.read();
+    //String line = client.readStringUntil('\r');
+    //Serial.print(line);
+    if(String(line) == "!"){
+      Serial.println("Record Exist!");
+    }
+    if(String(line) == "~"){
+      Serial.println("Record Added!");
+    }
+    
+    //dataStr[x] = line;
+    //x++;
+  }
+ 
+  Serial.println();
+  Serial.println("Closing connection");
+  trigger =0;
+  value="";
+  b=0;
+  c="";
+//  tag="";
+ }

@@ -1,0 +1,16 @@
+    HTTPClient http;  //Declare an object of class HTTPClient
+    String url1 = "http://www.rabbitfarm.tech/iot/getdata.php?tag=";
+    url1+=
+    http.begin(url1);  //Specify request destination
+    int httpCode = http.GET();                                                                  //Send the request
+ 
+    if (httpCode > 0) { //Check the returning code
+      Serial.println("Connecting to Web...");
+      String payload = http.getString();   //Get the request response payload
+      Serial.println(payload);                     //Print the response payload
+      if (payload.substring(0, 1) == "1") {
+       //Statement Here!
+      }
+    }
+ 
+    http.end();   //Close connection
